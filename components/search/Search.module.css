@@ -1,0 +1,103 @@
+.botonSearch {
+    z-index: 2;
+    position: absolute;
+    top: 2vh;
+    left: 4vw;
+    border: none;
+    color: #E7E7EB;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    height: 40px;
+    width: 161px;
+    background: #6E707A;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.searchContainer {
+    position: absolute;
+    z-index: 3;
+    height: 100vh;
+    background-color: #1E213A;
+}
+
+.close {
+    margin: 0 3vw;
+    padding: 1vh 0;
+    width: 94vw;
+    text-align: end;
+}
+
+.searchAndButton {
+    display: flex;
+    justify-content: space-between;
+    width: 92vw;
+    margin: 0 4vw;
+}
+
+.searchLocationContainer {
+    background-color: transparent;
+    border: 1px solid #E7E7EB;
+    display: flex;
+    align-items: center;
+    width: 65vw;
+    height: 48px;
+}
+
+.searchLocationContainer img {
+    margin: 0 2vw;
+}
+
+.searchLocationContainer input{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    
+}
+.searchLocationContainer input:focus{
+    outline: none;
+    color: #E7E7EB;
+}
+.searchAndButton button{
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    background-color: #3C47E9;
+    color: #E7E7EB;
+    border: none;
+    width: 24vw;
+}
+
+@media (min-width: 1000px) {
+    .botonSearch{
+        cursor: pointer;
+        left: 1vw;
+    }
+    .searchContainer{
+        width: 25vw;
+    }
+    .close{
+        width: 85%;
+    }
+    .close img{
+        cursor: pointer;
+    }
+    .searchAndButton{
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 0 ;
+    }
+    .searchLocationContainer{
+        width: 60%;
+    }
+    .searchLocationContainer img{
+        margin: 0 4%;
+    }
+    .searchAndButton button{
+        cursor: pointer;
+        width: 20%;
+    }
+}
