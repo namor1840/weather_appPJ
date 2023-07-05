@@ -1,7 +1,7 @@
-import styles from './High.module.css'
+import styles from './High.module.css';
 
 export default function High({ high }) {
-  const humidityPercentage = high.main.humidity
+  const humidityPercentage = high.main.humidity;
 
   return (
     <>
@@ -11,10 +11,13 @@ export default function High({ high }) {
       </div>
       <div className={styles.highContainer}>
         <span>Humidity</span>
-        <h1>{humidityPercentage} %</h1>
-        <div className={styles.progress}>
-          <div className={styles.progressBar} style={{ width: `${humidityPercentage}%` }}></div>
+        <div className={styles.progressBarContainer}>
+          <div
+            className={styles.progressBar}
+            style={{ width: `${humidityPercentage}%` }}
+          ></div>
         </div>
+        <h1>{humidityPercentage} %</h1>
       </div>
       <div className={styles.highContainer}>
         <span>Visibility</span>
@@ -25,5 +28,5 @@ export default function High({ high }) {
         <h1>{high.main.pressure} mb</h1>
       </div>
     </>
-  )
+  );
 }
