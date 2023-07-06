@@ -2,7 +2,7 @@
     background-color: #1E213A;
     color: #E7E7EB;
     font-family: 'Raleway', sans-serif;
-    width: 90vw;
+    width: 328px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -33,6 +33,28 @@
     background-color: #FFEC65;
     transition: width 0.3s ease-in-out;
   }
+
+  .temperatureToggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .windDirection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .windDirection img {
+    width: 29.49px;
+    height: 29.49px;
+    
+  }
+  
+  .windDirection span {
+    margin-left: 8px;
+  }
+  
+
   
 @media (min-width: 1000px) {
     .highContainer{
