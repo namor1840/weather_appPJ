@@ -17,13 +17,17 @@
 .highContainer span {
     font-size: 16px;
     font-weight: 500;
-    line-height: 55px;
     text-align: center;
+    height:29px;
+    bottom:12px;
+    line-height:1.8em;
 }
 
 .highContainer h1 {
     font-size: 32px;
     font-weight: 400;
+    margin-bottom:13px;
+    
 }
 
 .progressBarContainer {
@@ -32,12 +36,14 @@
     background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
+    
   }
   
   .progressBar {
     height: 100%;
     background-color: #FFEC65;
     transition: width 0.3s ease-in-out;
+    
   }
 
   .temperatureToggle {

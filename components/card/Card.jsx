@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './Card.module.css'
 
-const API_Key = '608aa8411698ca2511927838a7977ba2'
+const API_Key = 'ae9fe9f4adeaaccb1ec11fde930e54cc'
 
 const getData = async (link) => {
     const res = await fetch(link)
@@ -11,7 +11,7 @@ const getData = async (link) => {
 
 export default async function Card() {
 
-    const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=19.0386&lon=-98.196&appid=${API_Key}&units=metric`
+    const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=19.451054&lon=-70.697917&appid=${API_Key}&units=metric`
     const dataForecast = await getData(urlForecast)
     const forecastList = (dataForecast.list)
     const listFiltered = []

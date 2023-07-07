@@ -55,13 +55,14 @@ const High = ({ high }) => {
       </div>
       <div className={styles.highContainer}>
         <span>Humidity</span>
+        <h1>{high.main.humidity} %</h1>
         <div className={styles.progressBarContainer}>
           <div
             className={styles.progressBar}
             style={{ width: `${high.main.humidity}%` }}
           ></div>
         </div>
-        <h1>{high.main.humidity} %</h1>
+       
       </div>
       <div className={styles.highContainer}>
         <span>Visibility</span>
