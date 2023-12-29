@@ -9,7 +9,7 @@ const today = new Date().toDateString()
 const arrToday = today.split(' ')
 
 const getData = async () => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=19.451054&lon=-70.697917&appid=${API_Key}&units=metric`
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=19.4517&lon=-70.697&appid=${API_Key}&units=metric`
   const res = await fetch(url)
   const data = await res.json()
   return data
@@ -64,7 +64,7 @@ export default async function Home() {
         </section>
 
         <section className={styles.secHigh}>
-          <h4>Today&#8217;s Hightlights</h4>
+          <h4>Today's Hightlights</h4>
           <div className={styles.highCards}>
             <High high={data} />
           </div>

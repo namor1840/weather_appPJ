@@ -45,8 +45,8 @@ const High = ({ high }) => {
           <Image
             src="/arrow.svg"
             alt="Wind Direction"
-            width={29.49} // Agrega el valor adecuado para el ancho de la imagen
-            height={29.49} // Agrega el valor adecuado para la altura de la imagen
+            width={29.49} 
+            height={29.49} 
             style={{ transform: windDirectionRotation, fill: 'blue' }}
           />
 
