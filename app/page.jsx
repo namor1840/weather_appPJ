@@ -64,7 +64,7 @@ export default async function Home() {
         </section>
 
         <section className={styles.secHigh}>
-          <h4>Today's Hightlights</h4>
+          <h4>Today&apos;s Hightlights</h4>
           <div className={styles.highCards}>
             <High high={data} />
           </div>
