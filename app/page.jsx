@@ -9,11 +9,11 @@ const today = new Date().toDateString()
 const arrToday = today.split(' ')
 
 const getData = async () => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=19.4517&lon=-70.697&appid=${API_Key}&units=metric`
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=santiago%20de%20los%20caballeros&appid=${API_Key}&units=metric`
   const res = await fetch(url)
   const data = await res.json()
   return data
-}
+ }
 
 export default async function Home() {
   const data = await getData()
@@ -42,7 +42,7 @@ export default async function Home() {
         <div className={styles.info}>
           <div className={styles.temp}>
             <h1>{Math.round(data.main.temp)}</h1><p>°C</p>
-          </div>
+            </div>
           <h3>{data.weather[0].description}</h3>
           <span>Today • {arrToday[0]}, {Math.round(arrToday[2])} {arrToday[1]}</span>
           <div className={styles.location}>

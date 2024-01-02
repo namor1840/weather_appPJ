@@ -10,7 +10,7 @@ const getData = async (link) => {
 };
 
 export default async function Card() {
-  const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=19.4517&lon=-70.697&appid=${API_Key}&units=metric`;
+  const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=santiago%20de%20los%20caballeros&appid=${API_Key}&units=metric`;
   const dataForecast = await getData(urlForecast);
   const forecastList = dataForecast.list;
 
