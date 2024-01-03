@@ -1,3 +1,5 @@
+"use client"
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './Card.module.css';
 
@@ -9,22 +11,30 @@ const getData = async (link) => {
   return data;
 };
 
-export default async function Card() {
-  const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=santiago%20de%20los%20caballeros&appid=${API_Key}&units=metric`;
-  const dataForecast = await getData(urlForecast);
-  const forecastList = dataForecast.list;
+const Card = () => {
+  const [dailyForecasts, setDailyForecasts] = useState([]);
 
-  // Group forecast data by date
-  const groupedByDate = forecastList.reduce((acc, forecast) => {
-    const date = forecast.dt_txt.slice(0, 10);
-    if (!acc[date]) {
-      acc[date] = [];
-    }
-    acc[date].push(forecast);
-    return acc;
-  }, {});
+  useEffect(() => {
+    const fetchData = async () => {
+      const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=santiago%20de%20los%20caballeros&appid=${API_Key}&units=metric`;
+      const dataForecast = await getData(urlForecast);
 
-  const dailyForecasts = Object.values(groupedByDate);
+      // Group forecast data by date
+      const groupedByDate = dataForecast.list.reduce((acc, forecast) => {
+        const date = forecast.dt_txt.slice(0, 10);
+        if (!acc[date]) {
+          acc[date] = [];
+        }
+        acc[date].push(forecast);
+        return acc;
+      }, {});
+
+      const dailyForecasts = Object.values(groupedByDate);
+      setDailyForecasts(dailyForecasts);
+    };
+
+    fetchData();
+  }, []); // Empty dependency array ensures the effect runs once after the initial render
 
   return (
     <>
@@ -56,4 +66,6 @@ export default async function Card() {
       })}
     </>
   );
-}
+};
+
+export default Card;

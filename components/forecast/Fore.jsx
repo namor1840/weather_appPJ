@@ -16,14 +16,20 @@ export default function Card() {
   const [forecastData, setForecastData] = useState([]);
 
   useEffect(() => {
-    fetchData(city);
-  }, [city]);
-
-  const fetchData = async (city) => {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_Key}&units=metric`;
-    const data = await getData(url);
-    setForecastData(data.list);
-  };
+    const fetchData = async () => {
+      try {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=santiago%20de%20los%20caballeros&appid=${API_Key}&units=metric`;
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log('API Response:', data);
+        setWeatherData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
 
   return (
     <>
