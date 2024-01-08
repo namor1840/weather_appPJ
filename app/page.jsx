@@ -56,7 +56,7 @@ const Home = () => {
             <h1>{Math.round(weatherData.main.temp)}</h1>
             <p>°C</p>
           </div>
-          <h3>{weatherData.weather[0].description}</h3>
+          <h3>{capitalizarPalabras(weatherData.weather[0].description)}</h3>
           <span>
             Today • {arrToday[0]}, {Math.round(arrToday[2])} {arrToday[1]}
           </span>
@@ -87,5 +87,7 @@ const Home = () => {
     </main>
   );
 };
-
+function capitalizarPalabras(texto) {
+  return texto.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+}
 export default Home;
