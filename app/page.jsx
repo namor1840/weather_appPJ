@@ -93,7 +93,7 @@ const Home = () => {
         </section>
 
         <section className={styles.secHigh}>
-          <h4>Today's Highlights</h4>
+          <h4>Today&apos;s Highlights</h4>
           <div className={styles.highCards}>
             <High high={weatherData} />
           </div>
