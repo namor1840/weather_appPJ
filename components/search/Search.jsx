@@ -5,30 +5,37 @@ import { useState } from 'react';
 
 const API_Key = 'f526d57399a0ff8feb9204cfbfd8765f';
 
-const getDataInput = async (urlSearch) => {
-  const res = await fetch(urlSearch);
-  const inputData = await res.json();
-  return inputData;
-};
+const cities = [
+  { name: "Santiago de los Caballeros", lat: 19.4517, lon: -70.6987 },
+  { name: "London", lat: 51.505, lon: -0.09 },
+  { name: "New York City", lat: 40.7128, lon: -74.0059 },
+  { name: "Tokyo", lat: 35.6895, lon: 139.6917 },
+  { name: "Paris", lat: 48.8566, lon: 2.3522 },
+  { name: "Berlin", lat: 52.5238, lon: 13.4127 },
+  { name: "Rome", lat: 41.9028, lon: 12.4963 },
+  { name: "São Paulo", lat: -23.5505, lon: -46.6333 },
+  { name: "Sydney", lat: -33.8688, lon: 151.2093 },
+  { name: "Moscow", lat: 55.7558, lon: 37.6173 },
+  { name: "Buenos Aires", lat: -34.8577, lon: -56.1333 },
+];
+
 
 export default function Search({ onSearch }) {
   const [botonState, setBotonState] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [selectedCity, setSelectedCity] = useState(null); // New state variable
 
   function showSearch() {
     setBotonState(!botonState);
   }
 
-  function seachPlace(e) {
-    setInputValue(e.target.value);
+  function handleCityChange(event) {
+    setSelectedCity(event.target.value); // Set selected city based on dropdown value
   }
 
-  async function seachPlaceButton() {
-    const urlSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=3&appid=${API_Key}`;
-    const places = await getDataInput(urlSearch);
-    console.log(places);
-    // Realizar acciones con los lugares encontrados
-    onSearch(places);
+  function handleSearch() {
+    if (selectedCity) {
+      onSearch({ name: selectedCity }); // Pass city name to parent
+    }
   }
 
   return (
@@ -40,36 +47,30 @@ export default function Search({ onSearch }) {
               src={'/close_FILL0_wght400_GRAD0_opsz48.svg'}
               width={30}
               height={30}
-              alt='close'
+              alt="close"
               onClick={showSearch}
             />
           </div>
           <div className={styles.searchAndButton}>
-            <div className={styles.searchLocationContainer}>
-              <Image
-                src={'/search_FILL0_wght400_GRAD0_opsz48.svg'}
-                width={24}
-                height={24}
-                alt='search'
-              />
-              <input
-                onChange={seachPlace}
-                value={inputValue}
-                className={styles.searchLocation}
-                type='text'
-                placeholder='search location'
-              />
-            </div>
-            <button onClick={seachPlaceButton} type='button'>
-              Search
+            <select value={selectedCity} onChange={handleCityChange}>
+              <option value="">Select a City</option>
+              {cities.map((city) => (
+                <option key={city.name} value={city.name}>
+                  {city.name}
+                </option>
+              ))}
+            </select>
+            <button onClick={handleSearch} type="button">
+              Show weather
             </button>
           </div>
         </div>
       ) : (
-        <button type='button' className={styles.botonSearch} onClick={showSearch}>
-          Search for places
+        <button type="button" className={styles.botonSearch} onClick={showSearch}>
+          Change City
         </button>
       )}
     </>
   );
 }
+
