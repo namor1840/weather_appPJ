@@ -44,13 +44,19 @@ const Card = ({ forecastLocation, weatherData }) => {
         // Get the maximum and minimum temperatures for the day
         const maxTemp = Math.max(...dailyForecast.map((item) => item.main.temp_max));
         const minTemp = Math.min(...dailyForecast.map((item) => item.main.temp_min));
+        const date = new Date(dailyForecast[0].dt_txt);
+        const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
+        const dayOfMonth = date.getDate();
+        const month = date.toLocaleDateString('en-US', { month: 'long' });
+        const year = date.getFullYear();
+        const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${month} ${year}`;
 
         // Use the first item in the daily forecast to get the date
-        const date = dailyForecast[0].dt_txt;
+        // const date = dailyForecast[0].dt_txt;
 
         return (
           <div key={index} className={styles.cardContainer}>
-            <h5>{date}</h5>
+            <h5>{formattedDate}</h5>
             <div className={styles.img}>
               <Image
                 src={`/weather-app-master/${dailyForecast[0].weather[0].icon}.png`}
