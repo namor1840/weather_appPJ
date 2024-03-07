@@ -10,6 +10,7 @@ const API_Key = 'f526d57399a0ff8feb9204cfbfd8765f';
 
 const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
 
   useEffect(() => {
@@ -23,13 +24,14 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const handleSearch = (selectedCity) => { // Function definition moved outside the useEffect hook
+  const handleSearch = (selectedCity) => {
     // Fetch weather data for the selected city
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity.name}&appid=${API_Key}&units=metric`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setWeatherData(data);
+        setSelectedLocation(selectedCity.name); // Set the selected location
       });
   };
 
@@ -89,13 +91,13 @@ const Home = () => {
 
       <div className={styles.secCardsHigh}>
         <section className={styles.secCards}>
-          <Card />
-        </section>
+        <Card location={selectedLocation} weatherData={weatherData} />
+          </section>
 
         <section className={styles.secHigh}>
           <h4>Today&apos;s Highlights</h4>
           <div className={styles.highCards}>
-            <High high={weatherData} />
+          <High location={selectedLocation} high={weatherData} />
           </div>
         </section>
       </div>

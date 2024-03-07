@@ -11,10 +11,12 @@ const getData = async (link) => {
   return data;
 };
 
-const Card = () => {
+const Card = ({ forecastLocation, weatherData }) => {
   const [dailyForecasts, setDailyForecasts] = useState([]);
+  
 
   useEffect(() => {
+    
     const fetchData = async () => {
       const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=santiago%20de%20los%20caballeros&appid=${API_Key}&units=metric`;
       const dataForecast = await getData(urlForecast);
