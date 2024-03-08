@@ -11,14 +11,14 @@ const getData = async (link) => {
   return data;
 };
 
-const Card = ({ forecastLocation, weatherData }) => {
+const Card = ({ Location, weatherData }) => {
   const [dailyForecasts, setDailyForecasts] = useState([]);
   
 
   useEffect(() => {
     
     const fetchData = async () => {
-      const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=santiago%20de%20los%20caballeros&appid=${API_Key}&units=metric`;
+      const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_Key}&units=metric`;
       const dataForecast = await getData(urlForecast);
 
       // Group forecast data by date
@@ -36,7 +36,7 @@ const Card = ({ forecastLocation, weatherData }) => {
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures the effect runs once after the initial render
+  }, [location]); // Empty dependency array ensures the effect runs once after the initial render
 
   return (
     <>
