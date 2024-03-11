@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './Card.module.css';
 
-const API_Key = 'ae9fe9f4adeaaccb1ec11fde930e54cc';
+const API_Key = 'f526d57399a0ff8feb9204cfbfd8765f';
 
 const getData = async (link) => {
   const res = await fetch(link);
@@ -11,18 +11,17 @@ const getData = async (link) => {
   return data;
 };
 
-const Card = ({ Location, weatherData }) => {
+const Card = ({ weatherData, forecastData }) => {
+  // Use the forecastData here
+
+
   const [dailyForecasts, setDailyForecasts] = useState([]);
   
 
   useEffect(() => {
-    
-    const fetchData = async () => {
-      const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_Key}&units=metric`;
-      const dataForecast = await getData(urlForecast);
-
+    if (forecastData && forecastData.list) { // Check if forecastData and forecastData.list are defined
       // Group forecast data by date
-      const groupedByDate = dataForecast.list.reduce((acc, forecast) => {
+      const groupedByDate = forecastData.list.reduce((acc, forecast) => {
         const date = forecast.dt_txt.slice(0, 10);
         if (!acc[date]) {
           acc[date] = [];
@@ -30,13 +29,11 @@ const Card = ({ Location, weatherData }) => {
         acc[date].push(forecast);
         return acc;
       }, {});
-
+  
       const dailyForecasts = Object.values(groupedByDate);
       setDailyForecasts(dailyForecasts);
-    };
-
-    fetchData();
-  }, [location]); // Empty dependency array ensures the effect runs once after the initial render
+    }
+  }, [forecastData]); // Dependency on forecastData
 
   return (
     <>
