@@ -35,6 +35,7 @@ export default function Search({ onSearch }) {
   function handleSearch() {
     if (selectedCity) {
       onSearch({ name: selectedCity }); // Pass city name to parent
+      setBotonState(false); // Close the search container after searching
     }
   }
 
@@ -73,4 +74,3 @@ export default function Search({ onSearch }) {
     </>
   );
 }
-
