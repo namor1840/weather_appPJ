@@ -17,6 +17,9 @@ const cities = [
   { name: "Sydney", lat: -33.8688, lon: 151.2093 },
   { name: "Moscow", lat: 55.7558, lon: 37.6173 },
   { name: "Buenos Aires", lat: -34.8577, lon: -56.1333 },
+  { name: "Mexico City", lat: 19.4326, lon: -99.1332 },
+  { name: "Santo Domingo", lat: 18.4667, lon: -6},
+  { name: "Bogotá", lat: 4.6097, lon: -74.081},
 ];
 
 

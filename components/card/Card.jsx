@@ -5,12 +5,6 @@ import styles from './Card.module.css';
 
 const API_Key = 'f526d57399a0ff8feb9204cfbfd8765f';
 
-const getData = async (link) => {
-  const res = await fetch(link);
-  const data = await res.json();
-  return data;
-};
-
 const Card = ({ weatherData, forecastData }) => {
   // Use the forecastData here
 
