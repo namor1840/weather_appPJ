@@ -64,14 +64,14 @@ const Home = () => {
     <main className={styles.allSection}>
       <section className={styles.secPrincipal}>
       <Search onSearch={handleSearch} />     
-           <div className={styles.imgContainer}>
+           {/* <div className={styles.imgContainer}>
           <Image
             src={"/my_location_FILL1_wght400_GRAD0_opsz48.svg"}
             width={30}
             height={30}
             alt="MyLocation"
           />
-        </div>
+        </div> */}
         <div className={styles.clouds}></div>
         <div className={styles.weaImg}>
           <Image
